@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'rest-countries-angular';
+
+  // lightTheme = false
+  lightTheme = true
+
+  theme = this.lightTheme ? 'Light-Mode' : 'Dark-Mode'
+
+  appClass = {
+    'App': true,
+  }
 }

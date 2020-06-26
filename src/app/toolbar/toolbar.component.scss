@@ -1,0 +1,45 @@
+@import '../../assets/colorTheme';
+.Header {
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    box-sizing: border-box;
+    height: 72px;
+    box-shadow: $light-box-shadow;
+    h3 {
+        margin: 0;
+        font-weight: 800;
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 376px) {
+    .Header {
+        h3 {
+            font-size: inherit;
+        }
+    }
+}
+
+.Dark-Mode {
+    background-color: $dark-blue;
+    color: $white;
+    box-shadow: $dark-box-shadow;
+}
+
+.Button {
+    background: none;
+    border: none;
+    font: inherit;
+    font-weight: 600;
+    padding: 10px 20px;
+    color: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: none;
+    &:focus {
+        outline: none;
+    }
+}

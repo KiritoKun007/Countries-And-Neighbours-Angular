@@ -1,0 +1,11 @@
+@import '../assets/colorTheme';
+.App {
+    background-color: $very-light-grey;
+    color: $very-dark-blue;
+    min-height: 100vh;
+}
+
+.Dark-Mode {
+    background-color: $very-dark-blue-bg;
+    color: $white;
+}

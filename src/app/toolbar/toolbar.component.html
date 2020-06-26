@@ -1,0 +1,17 @@
+<header [ngClass]="toolbarClasses" [class]="theme">
+    <h3>Where in the World?</h3>
+
+    <button [ngClass]="{
+        'Button': true, 
+        'Light-Mode': theme === 'Light-Mode', 
+        'Dark-Mode': theme !== 'Light-Mode'
+    }" (click)="changeTheme()">
+        <i 
+            [class]="theme === 'Light-Mode' ? 'fas fa-moon' : 'fas fa-sun'" 
+            [ngStyle]="{
+                color: theme === 'Light-Mode' ? 'hsl(209, 23%, 22%)' : 'white', 
+                paddingRight: '10px'
+            }"></i>
+        {{ theme === 'Light-Mode' ? 'Dark Mode' : 'Light Mode' }}
+    </button>
+</header>
