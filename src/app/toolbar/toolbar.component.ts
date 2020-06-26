@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'toolbar',
@@ -7,11 +8,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  @Input('theme') theme: any
+  constructor(private themeMode: ThemeService) { }
 
-  @Output() changeThemeEvent = new EventEmitter()
-
-  constructor() { }
+  get theme(): string {
+    return this.themeMode.theme;
+  }
 
   ngOnInit(): void {
   }
@@ -20,13 +21,13 @@ export class ToolbarComponent implements OnInit {
     'Header': true,
   }
 
-  iconClass = this.theme !== 'Light-Mode' ? 'fas fa-moon' : 'fas fa-sun';
+  iconClass = this.theme === 'Light-Mode' ? 'fas fa-moon' : 'fas fa-sun';
 
   changeTheme() {
     if(this.theme === 'Light-Mode') {
-      this.changeThemeEvent.emit('Dark-Mode')
+      this.themeMode.changeThemeMode('Dark-Mode')
     } else {
-      this.changeThemeEvent.emit('Light-Mode')
+      this.themeMode.changeThemeMode('Light-Mode')
     }
   }
 

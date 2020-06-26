@@ -1,5 +1,5 @@
 <div [ngClass]="{'App': true, 'Light-Mode': theme === 'Light-Mode', 'Dark-Mode': theme !== 'Light-Mode' }">
-    <toolbar [theme]="theme" (changeThemeEvent)="theme=$event"></toolbar>
+    <toolbar></toolbar>
 
     <router-outlet></router-outlet>
 </div>

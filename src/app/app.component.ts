@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,11 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'rest-countries-angular';
 
-  // lightTheme = false
-  lightTheme = true
+  constructor (private themeMode: ThemeService) { }
 
-  theme = this.lightTheme ? 'Light-Mode' : 'Dark-Mode'
+  get theme(): string {
+    return this.themeMode.theme;
+  }
 
   appClass = {
     'App': true,
