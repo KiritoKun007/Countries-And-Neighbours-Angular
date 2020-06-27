@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
-import { Observable, of } from 'rxjs';
-import { Countries } from './country';
+import { Observable, of, Subject } from 'rxjs';
+import { Countries, Country, BorderCountry } from './country';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountryService {
-
   constructor(
     private http: HttpClient,
     private message: MessageService ) { }
@@ -20,6 +19,7 @@ export class CountryService {
 
   private BaseURL = `https://restcountries.eu/rest/v2`
   private countriesURL = `/all?fields=name;capital;region;population;flag;alpha3Code`
+  private countryURL = `?fullText=true&fields=name;capital;region;population;flag;nativeName;subregion;topLevelDomain;currencies;languages;borders`
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -40,5 +40,29 @@ export class CountryService {
         catchError(this.handleError<Countries[]>('getCountries', []))
       )
   }
+
+  // GET Country Detail from the server
+  getCountry(countryName: string): Observable<Country[]> {
+    return this.http.get<Country[]>(`${this.BaseURL}/name/${countryName}${this.countryURL}`)
+      .pipe(
+        catchError(this.handleError<Country[]>('getCountry', []))
+      )
+  }
+
+  // GET Border Countries Name from the server
+  getBorderCountries(borders: string): Observable<BorderCountry[]> {
+    return this.http.get<BorderCountry[]>(`${this.BaseURL}/alpha?codes=${borders}&fields=name`)
+      .pipe(
+        catchError(this.handleError<BorderCountry[]>('getBorderCountries', []))
+      )
+  } 
+
+  // GET Countries by Region from the server
+  getCountriesByRegion(region: string): Observable<Countries[]> {
+    return this.http.get<Countries[]>(`${this.BaseURL}/region/${region}?fields=name;capital;region;population;flag;alpha3Code`)
+      .pipe(
+        catchError(this.handleError<Countries[]>('getCountries', []))
+      )
+  } 
 
 }

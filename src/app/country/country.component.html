@@ -1,1 +1,7 @@
-<p>country works!</p>
+<div class="Country">
+    <button [ngClass]="theme === 'Light-Mode' ? 'BackButton' : 'BackButton Dark-Mode'" (click)="location.back()">
+        <i class="fas fa-arrow-left" ></i>
+        Back
+    </button>
+    <country-detail [theme]="theme"></country-detail>
+</div>

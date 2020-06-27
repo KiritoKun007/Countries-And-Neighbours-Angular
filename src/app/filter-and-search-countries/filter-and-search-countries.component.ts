@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CountryService } from '../country.service';
 
 @Component({
   selector: 'filter-and-search-countries',
@@ -8,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FilterAndSearchCountriesComponent implements OnInit {
 
   @Input() theme: string;
+  @Output() filterByRegion = new EventEmitter()
   
   public searchedCountryInput: string = '';
   regionName: string = 'Filter By Region';
@@ -30,6 +32,7 @@ export class FilterAndSearchCountriesComponent implements OnInit {
     console.log(region.id)
     this.regionName = region.name
     this.showDropDown = !this.showDropDown
+    this.filterByRegion.emit(region.name)
   }
 
 }

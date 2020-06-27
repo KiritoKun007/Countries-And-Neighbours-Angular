@@ -1,5 +1,5 @@
 <div [ngClass]="'AllCountries'">
-    <div *ngFor="let country of countries" [ngClass]="theme === 'Light-Mode' ? 'CountrySummary': 'CountrySummary Dark-Mode'">
+    <div *ngFor="let country of countries" [ngClass]="theme === 'Light-Mode' ? 'CountrySummary': 'CountrySummary Dark-Mode'" (click)="onCountrySelect(country.name)">
         <img src={{country.flag}} alt="Country Flag" />
         <div class="Summary">
             <h4>{{country.name}}</h4>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from '../theme.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'country',
@@ -7,7 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountryComponent implements OnInit {
 
-  constructor() { }
+  location: Location
+
+  constructor(
+    private themeMode: ThemeService,
+    location: Location
+  ) {
+    this.location = location
+  }
+
+  get theme() : string {
+    return this.themeMode.theme
+  }
 
   ngOnInit(): void {
   }

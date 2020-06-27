@@ -1,0 +1,32 @@
+@import '../../assets/colorTheme';
+.Country {
+    padding: 3rem 3rem 0;
+}
+
+.BackButton {
+    background-color: $white;
+    border: none;
+    border-radius: 2px;
+    box-shadow: $light-box-shadow;
+    color: $dark-grey;
+    padding: 8px 13px;
+    i {
+        padding-right: 1rem;
+    }
+    &:hover {
+        box-shadow: $light-box-shadow-hover;
+        cursor: pointer;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.Dark-Mode {
+    background-color: $dark-blue;
+    color: $white;
+    box-shadow: $dark-box-shadow;
+    &:hover {
+        box-shadow: $dark-box-shadow-hover;
+    }
+}

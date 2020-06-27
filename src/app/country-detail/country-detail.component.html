@@ -1,1 +1,38 @@
-<p>country-detail works!</p>
+<div [ngClass]="'Country'">
+    <div [ngClass]="'CountryFlag'">
+        <img src={{country.flag}} alt="Country Flag" />
+    </div>
+    <div [ngClass]="'CountryDetails'">
+        <p [ngClass]="'Name'">
+            {{country.name}}
+        </p>
+        <div [ngClass]="'Details'">
+            <p> <strong>Native Name:</strong>&nbsp; {{country.nativeName}} </p>
+            <p> <strong>Population:</strong>&nbsp; {{country.population}} </p>
+            <p> <strong>Region:</strong>&nbsp; {{country.region}} </p>
+            <p> <strong>Sub Region:</strong>&nbsp; {{country.subregion}} </p>
+            <p> <strong>Capital:</strong>&nbsp; {{country.capital}} </p>
+            <p> <strong>Top Level Domain:</strong>&nbsp; {{country.topLevelDomain.join(', ')}} </p>
+            <p>
+                <strong>Currencies:</strong>&nbsp; {{currencies}}
+            </p>
+            <p>
+                <strong>Languages:</strong>&nbsp; {{languages}}
+            </p>
+        </div>
+
+        <div [ngClass]="'BorderCountryContainer'">
+            <strong>Border Countries:</strong>&nbsp;
+            <div [ngClass]="'BorderCountries'" *ngIf="borderCountries.length > 0; else elseBlock">
+                <button [ngClass]="theme === 'Light-Mode' ? 'BorderCountry': 'BorderCountry Dark-Mode'" *ngFor="let border of borderCountries" (click)="goToCountry(border.name)">
+                    {{border.name}}
+                </button>
+            </div>
+            <ng-template #elseBlock>
+                <div [ngClass]="'BorderCountries'">
+                    <p [ngStyle]="{margin: '0', fontSize: '12px', marginTop: '5px'}">There are no Border Countries</p>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
