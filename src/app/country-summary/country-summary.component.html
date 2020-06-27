@@ -1,0 +1,13 @@
+<div [ngClass]="'AllCountries'">
+    <div *ngFor="let country of countries" [ngClass]="theme === 'Light-Mode' ? 'CountrySummary': 'CountrySummary Dark-Mode'">
+        <img src={{country.flag}} alt="Country Flag" />
+        <div class="Summary">
+            <h4>{{country.name}}</h4>
+            <div>
+                <p> <strong>Population:</strong>&nbsp; {{country.population}} </p>
+                <p> <strong>Region:</strong>&nbsp; {{country.region}} </p>
+                <p> <strong>Capital:</strong>&nbsp; {{country.capital}} </p>
+            </div>
+        </div>
+    </div>
+</div>
