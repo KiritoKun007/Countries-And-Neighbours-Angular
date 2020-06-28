@@ -1,4 +1,4 @@
-<div [ngClass]="'Country'">
+<div [ngClass]="'Country'" *ngIf="country">
     <div [ngClass]="'CountryFlag'">
         <img src={{country.flag}} alt="Country Flag" />
     </div>

@@ -8,8 +8,6 @@ import { ThemeService } from '../theme.service';
 })
 export class CountriesComponent implements OnInit {
 
-  region: any;
-
   constructor(private themeMode: ThemeService) { }
 
   get theme(): string {

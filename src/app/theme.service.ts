@@ -12,6 +12,7 @@ export class ThemeService {
 
   constructor() {
     this.themeChange.subscribe((value) => {
+      localStorage.setItem('theme', value)
       console.log(value)
       this.theme = value
     })

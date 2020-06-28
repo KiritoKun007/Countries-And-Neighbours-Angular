@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Observable, of, Subject } from 'rxjs';
-import { Countries, Country, BorderCountry } from './country';
+import { Countries, Country, CountryWithOnlyName } from './country';
 import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -50,10 +50,10 @@ export class CountryService {
   }
 
   // GET Border Countries Name from the server
-  getBorderCountries(borders: string): Observable<BorderCountry[]> {
-    return this.http.get<BorderCountry[]>(`${this.BaseURL}/alpha?codes=${borders}&fields=name`)
+  getBorderCountries(borders: string): Observable<CountryWithOnlyName[]> {
+    return this.http.get<CountryWithOnlyName[]>(`${this.BaseURL}/alpha?codes=${borders}&fields=name`)
       .pipe(
-        catchError(this.handleError<BorderCountry[]>('getBorderCountries', []))
+        catchError(this.handleError<CountryWithOnlyName[]>('getBorderCountries', []))
       )
   } 
 
@@ -62,6 +62,17 @@ export class CountryService {
     return this.http.get<Countries[]>(`${this.BaseURL}/region/${region}?fields=name;capital;region;population;flag;alpha3Code`)
       .pipe(
         catchError(this.handleError<Countries[]>('getCountries', []))
+      )
+  } 
+
+  searchCountry(term: string): Observable<CountryWithOnlyName[]> {
+    if(!term.trim()) {
+      return of([])
+    }
+    
+    return this.http.get<CountryWithOnlyName[]>(`${this.BaseURL}/name/${term}?fields=name`)
+      .pipe(
+        catchError(this.handleError<CountryWithOnlyName[]>('getSearchedCountriesName', []))
       )
   } 
 

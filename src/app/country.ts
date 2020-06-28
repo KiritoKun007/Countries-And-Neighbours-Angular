@@ -21,6 +21,6 @@ export interface Country {
     topLevelDomain: string[]
 }
 
-export interface BorderCountry {
+export interface CountryWithOnlyName {
     name: any
 }

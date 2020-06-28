@@ -9,7 +9,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ThemeService } from './theme.service';
 import { CountrySummaryComponent } from './country-summary/country-summary.component';
 import { CountryDetailComponent } from './country-detail/country-detail.component';
-import { FilterAndSearchCountriesComponent } from './filter-and-search-countries/filter-and-search-countries.component';
 import { MessageComponent } from './message/message.component';
 
 @NgModule({
@@ -19,7 +18,6 @@ import { MessageComponent } from './message/message.component';
     ...routingComponent,
     CountrySummaryComponent,
     CountryDetailComponent,
-    FilterAndSearchCountriesComponent,
     MessageComponent
   ],
   imports: [

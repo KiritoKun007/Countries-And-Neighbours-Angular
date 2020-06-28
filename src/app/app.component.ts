@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeService } from './theme.service';
 
 @Component({
@@ -6,13 +6,21 @@ import { ThemeService } from './theme.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'rest-countries-angular';
 
   constructor (private themeMode: ThemeService) { }
 
   get theme(): string {
     return this.themeMode.theme;
+  }
+
+  ngOnInit(): void {
+    let theme = localStorage.getItem('theme')
+
+    if(theme) {
+      this.themeMode.changeThemeMode(theme)
+    }
   }
 
   appClass = {

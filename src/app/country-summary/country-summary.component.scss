@@ -73,3 +73,183 @@
         }
     }
 }
+
+.SearchNFilter {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (min-width: 376px) {
+        flex-direction: row;
+        align-items: center;
+    }
+    .Search {
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+        box-shadow: $light-box-shadow;
+        height: 40px;
+        padding: 5px 20px;
+        background-color: $white;
+        width: 100%;
+        margin-bottom: 2rem;
+        box-sizing: border-box;
+        position: relative;
+        @media (min-width: 376px) {
+            width: 40%;
+            margin-bottom: 0;
+        }
+        ul {
+            list-style: none;
+            padding: 10px 20px;
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            font-size: 12px;
+            color: $dark-grey;
+        }
+        li {
+            padding: 5px 0;
+        }
+        li:hover {
+            color: $dark-blue;
+        }
+        i {
+            font-weight: 600;
+            color: $dark-grey;
+            padding-right: 1.5rem;
+            font-size: 13px;
+        }
+        .SearchedCountries {
+            position: absolute;
+            top: 3rem;
+            background: inherit;
+            border-radius: 5px;
+            box-shadow: $light-box-shadow;
+            max-height: 20rem;
+            overflow: auto;
+            li {
+                font-size: 12px;
+                color: $dark-grey;
+                cursor: pointer;
+                &:hover {
+                    color: $dark-blue;
+                }
+            }
+        }
+        .SearchInput {
+            border: none;
+            background: none;
+            font: inherit;
+            font-size: 12px;
+            width: 100%;
+            color: $dark-grey;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+.Dark-Mode {
+    .Search {
+        box-shadow: $dark-box-shadow;
+        background-color: $dark-blue;
+        a {
+            color: $white;
+        }
+        li:hover {
+            color: $dark-grey;
+        }
+        i {
+            color: $white;
+        }
+        .SearchedCountries {
+            box-shadow: $dark-box-shadow;
+            li {
+                color: $white;
+                &:hover {
+                    color: $dark-grey;
+                }
+            }
+        }
+        .SearchInput {
+            color: $white;
+        }
+    }
+}
+
+.DropDown {
+    width: 50%;
+    position: relative;
+    @media (min-width: 376px) {
+        width: 25%;
+    }
+    button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $white;
+        border: none;
+        padding: 5px 10px;
+        font: inherit;
+        font-size: 11px;
+        color: $dark-grey;
+        height: 2.5rem;
+        border-radius: 5px;
+        box-shadow: $light-box-shadow;
+        width: 100%;
+        i {
+            font-weight: 600;
+            color: $dark-grey;
+            font-size: 13px;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    .DropDownList {
+        position: absolute;
+        top: 3rem;
+        left: 0;
+        background-color: $white;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: $light-box-shadow;
+        ul {
+            list-style: none;
+            padding: 0 20px;
+        }
+        li {
+            color: $dark-grey;
+            font-size: 12px;
+            padding: 5px 0;
+        }
+        li:hover {
+            color: $dark-blue;
+            cursor: pointer;
+        }
+    }
+}
+
+.Dark-Mode {
+    button {
+        background-color: $dark-blue;
+        box-shadow: $dark-box-shadow;
+        color: $white;
+        i {
+            color: $white;
+        }
+    }
+    .DropDownList {
+        background-color: $dark-blue;
+        box-shadow: $dark-box-shadow;
+        li {
+            color: $white;
+            &:hover {
+                color: $dark-grey;
+            }
+        }
+    }
+}

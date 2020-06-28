@@ -2,7 +2,5 @@
                 'Light-Mode': theme === 'Light-Mode',
                 'Dark-Mode': theme !== 'Light-Mode'}">
 
-    <filter-and-search-countries [theme]="theme" (filterByRegion)="region=$event"></filter-and-search-countries>
-
-    <country-summary [theme]="theme" [region]="region"></country-summary>
+    <country-summary [theme]="theme"></country-summary>
 </div>
